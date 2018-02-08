@@ -1,10 +1,11 @@
-import React from 'react';
 import { render } from 'react-dom';
+
+import React from 'react';
 
 export default class App extends React.Component {
     render() {
         return (
-            <h2>My Cloud App</h2>
-        );
+            <h2>I am REACT COMPONENT</h2>
+        )
     }
 }
