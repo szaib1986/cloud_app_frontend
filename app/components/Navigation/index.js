@@ -10,13 +10,18 @@ import { cyan500, orange500, amber900, white, amber100 } from 'material-ui/style
 import { amber600 } from 'material-ui/styles/colors';
 import { amber50 } from 'material-ui/styles/colors';
 import { blueGrey300 } from 'material-ui/styles/colors';
+import { blueGrey50, blueGrey500 } from 'material-ui/styles/colors';
+import { indigo500 } from 'material-ui/styles/colors';
 const Navigation = (props) => {
     const style = {
         appBar: {
-            backgroundColor: blueGrey300
+            backgroundColor: blueGrey500
         },
         drawer: {
-            backgroundColor: amber50
+            backgroundColor: "#f4f4f4",
+            position: "absolute",
+            height: "calc(100% - 50px)",
+            marginTop: "50px"
         }
     };
 
@@ -37,7 +42,7 @@ const Navigation = (props) => {
 
     return (
         <div className="navigation">
-            <AppBar
+            <AppBar className="app-bar"
                 style={style.appBar}
                 title={
                     <div style={fullHeight} className="Zaib">
@@ -69,7 +74,7 @@ const Navigation = (props) => {
                 iconElementRight={<TopMenu {...props} />}
             >
             </AppBar>
-            <Drawer containerStyle={style.drawer} onRequestChange={props.toggleDrawer} docked={false} open={props.isDrawerOpen}>
+            <Drawer containerStyle={style.drawer} docked={true} open={true}>
                 <List>
                     <ListItem
                         disabled={true}

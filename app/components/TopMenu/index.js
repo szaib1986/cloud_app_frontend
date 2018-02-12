@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import {
-    RaisedButton, FontIcon, IconButton, FlatButton, Badge
+    RaisedButton, FontIcon, IconButton, FlatButton, IconMenu, MenuItem, Popover
 } from 'material-ui';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { blue500, red500, greenA200, white } from 'material-ui/styles/colors';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import NotificationSms from 'material-ui/svg-icons/notification/sms';
@@ -24,17 +25,9 @@ const TopMenu = (props) => {
         }
     };
     return (
-        <div style={fullHeight} className="Zaib">
+        <div style={fullHeight}>
             <FlatButton
-                label="About Us"
-                labelPosition="after"
-                style={iconStyles.icon} />
-            <FlatButton
-                label="Services"
-                labelPosition="after"
-                style={iconStyles.icon} />
-            <FlatButton
-                label="Contact Us"
+                label="Log In"
                 labelPosition="after"
                 style={iconStyles.icon} />
         </div>
