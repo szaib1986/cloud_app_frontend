@@ -1,0 +1,1 @@
+export const SEARCH_DEAL = 'app/containers/DealSearchContainer/DealSearchResultContainer/SEARCH_DEAL';

@@ -1,5 +1,6 @@
+//used to contain all the application wide configuration in one place
 var config = {
-    PORT: process.env.PORT || 3210
+    Port: process.env.PORT || 3210
 };
 
-export default config;
+module.exports = config;

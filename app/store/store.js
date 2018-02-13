@@ -3,10 +3,13 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { fromJS } from 'immutable';
+//routeMiddleware can be used to hijack the location change status
 import { routerMiddleware } from 'react-router-redux';
+
+//This function is used to configure the redux store
+//added middlewares to log the events
 let configureStore = (initialState = {}, history) => {
-console.log('Configuring Store')
+
     const logger = createLogger();
 
     const middlewares = [
@@ -25,12 +28,11 @@ console.log('Configuring Store')
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
-        // Prevent recomputing reducers for `replaceReducer`
         shouldHotReload: false,
       })
       : compose;
 
+    //creating store here
     const store = createStore(
         allReducers,
         composeEnhancers(...enhancers)

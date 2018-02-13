@@ -1,6 +1,6 @@
+//centralized way of ovverriding the Material UI theme
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { cyan500, orange500, amber900, white, blueGrey300 } from 'material-ui/styles/colors';
-import { grey800 } from 'material-ui/styles/colors';
+import { grey800, orange500, blueGrey300 } from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
     palette: {

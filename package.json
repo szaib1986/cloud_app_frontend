@@ -1,5 +1,5 @@
 {
-  "name": "cloud_app_frontend",
+  "name": "trip_sorter",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,17 +9,9 @@
     "build": "webpack",
     "start": "webpack && node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/szaib1986/cloud_app_frontend.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/szaib1986/cloud_app_frontend/issues"
-  },
-  "homepage": "https://github.com/szaib1986/cloud_app_frontend#readme",
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
