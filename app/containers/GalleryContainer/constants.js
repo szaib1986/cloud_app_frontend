@@ -1,0 +1,1 @@
+export const LOAD_GALLERY = 'app/containers/GalleryContainer/LOAD_GALLERY';
