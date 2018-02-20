@@ -1,0 +1,1 @@
+export const LOGIN_ACTION = 'app/containers/LoginContainer/LOGIN_ACTION';
