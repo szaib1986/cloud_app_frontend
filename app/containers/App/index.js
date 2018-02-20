@@ -7,6 +7,7 @@ import AboutUs from "../../components/AboutUs/index";
 import Footer from "../../components/Footer/index";
 import NavigationContainer from "../NavigationContainer/index";
 import GalleryContainer from "../GalleryContainer/index"
+import { closeToastr } from "./actions"
 import { toJS, fromJS } from "immutable";
 import  { connect } from 'react-redux';
 // import LoginContainer from "../LoginContainer/index"
@@ -14,8 +15,6 @@ import  { connect } from 'react-redux';
 class App extends React.Component {
     render() {
         const styles = {
-            marginLeft: "270px", 
-            marginRight: "15px", 
             overflow: "hidden", 
             height: "100%"
         };
@@ -35,6 +34,7 @@ class App extends React.Component {
                     open={this.props.toastr.isOpen}
                     message={this.props.toastr.message}
                     autoHideDuration={this.props.toastr.autoHideDuration}
+                    onRequestClose={this.props.closeToastr}
                 />
             </div>
         )
@@ -46,7 +46,8 @@ const mapStateToProps = ({AppReducer}) => {
 
 function mapDispatchToProps(dispatch) {
     return {
-      dispatch
+      dispatch,
+      closeToastr: () =>  dispatch(closeToastr())
     };
 }
 

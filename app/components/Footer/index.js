@@ -9,7 +9,7 @@ const Footer = (props) => {
     }
     return (
         <div className="footer" style={styles}>
-            CopyRight &copy; 2018 www.cloudapp.com
+            CopyRight &copy; 2018 www.talentohire.com
         </div>
     )
 }

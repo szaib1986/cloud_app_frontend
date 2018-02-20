@@ -1,99 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
-import PageHeader  from "../Includes/PageTitle/index";
+import PageHeader from "../Includes/PageTitle/index";
 import IconButton from 'material-ui/IconButton';
-import { FloatButton, Card, CardText, GridList, GridTile, Subheader} from 'material-ui';
+import { Card, CardText, FloatingActionButton, GridList, GridTile, Subheader } from 'material-ui';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 const Gallery = (props) => {
-    const styles = {
-        root: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around',
-        },
-        gridList: {
-          width: "100%",
-          height: 350,
-          overflowY: 'auto',
-        },
-    };
-    const tilesData = [
-        {
-          img: 'images/grid-list/00-52-29-429_640.jpg',
-          title: 'Breakfast',
-          author: 'jill111',
-        },
-        {
-          img: 'images/grid-list/burger-827309_640.jpg',
-          title: 'Tasty burger',
-          author: 'pashminu',
-        },
-        {
-          img: 'images/grid-list/camera-813814_640.jpg',
-          title: 'Camera',
-          author: 'Danson67',
-        },
-        {
-          img: 'images/grid-list/morning-819362_640.jpg',
-          title: 'Morning',
-          author: 'fancycrave1',
-        },
-        {
-          img: 'images/grid-list/hats-829509_640.jpg',
-          title: 'Hats',
-          author: 'Hans',
-        },
-        {
-          img: 'images/grid-list/honey-823614_640.jpg',
-          title: 'Honey',
-          author: 'fancycravel',
-        },
-        {
-          img: 'images/grid-list/vegetables-790022_640.jpg',
-          title: 'Vegetables',
-          author: 'jill111',
-        },
-        {
-          img: 'images/grid-list/water-plant-821293_640.jpg',
-          title: 'Water plant',
-          author: 'BkrmadtyaKarki',
-        },
-      ];
-    function containerWidth() {
-        if (screen.width < 768)
-            return 1
-        else if (screen.width > 768)
-            return 5
-        else 
-            return 2
+  const styles = {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+    },
+    gridList: {
+      width: "100%",
+      overflowY: 'auto',
+    },
+  };
+  function containerWidth() {
+    if (screen.width < 768)
+      return 1
+    else if (screen.width > 768)
+      return 5
+    else
+      return 2
+  }
+  function formatDateOnly(date) {
+    let d = new Date(date);
+    return d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear()
+  }
+  function renderGallery(gallery) {
+
+    if (!gallery || gallery.length == 0) {
+      return (
+        <h2>No Image Found!</h2>
+      )
     }
-    return (
-        <div style={styles.root}>
-            <GridList
-              cellHeight={120}
-              style={styles.gridList}
-              cols={containerWidth()}
-            >
-                <Subheader>December</Subheader>
-                {tilesData.map((tile) => (
-                    <GridTile
-                      key={tile.img}
-                      title={tile.title}
-                      subtitle={<span>by <b>{tile.author}</b></span>}
-                      onClick={props.showZoomedImage}
-                      actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                    >
-                      <img src={tile.img} />
-                    </GridTile>
-                ))}
-            </GridList>
-        </div>
-    );
+
+    if (gallery && gallery.length > 0)
+      return (<GridList
+        cellHeight={180}
+        style={styles.gridList}
+        cols={containerWidth()}
+      >
+        {props.gallery.map((galleryImg) => (
+          <GridTile
+            key={galleryImg.id}
+            title={<span>Added on: <b>{formatDateOnly(galleryImg.createdDate)}</b></span>}
+            onClick={() => props.showZoomedImage(galleryImg.id)}
+          >
+            <img src={galleryImg.src} style={{width: "100%"}} />
+          </GridTile>
+        ))}
+      </GridList>);
+  }
+  return (
+    <div className="page-container">
+      <PageHeader title="Gallery" />
+      <div className="page-content">
+        <FloatingActionButton 
+        style={{position: "absolute", right: 0,zIndex: 999, bottom: 40, marginRight: 20 }}
+        onClick={props.openImageAddDialog}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
+        <Card className="card">
+          <CardText style={styles.root}>
+            {renderGallery(props.gallery)}
+          </CardText>
+        </Card>
+      </div>
+    </div>
+  );
 }
 
 Gallery.propTypes = {
-    showZoomedImage: PropTypes.func.isRequired
+  gallery: PropTypes.array.isRequired,
+  showZoomedImage: PropTypes.func.isRequired
 };
 
 export default Gallery;

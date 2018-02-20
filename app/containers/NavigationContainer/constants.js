@@ -1,1 +1,0 @@
-export const TOGGLE_DRAWER = 'app/containers/NavigationContainer/TOGGLE_DRAWER';
