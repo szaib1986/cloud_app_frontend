@@ -102,8 +102,11 @@ h6 {
     border-radius: 0px !important;
     position: relative;
 }
-
-.footer:after{
+.dialog-body {
+    margin-top: 15px;
+}
+.footer:after,
+.dialog-body:after{
     background: linear-gradient(to right, #EF5350 15%,#9C27B0 35%, #C0CA33  50%, #e84f47 65%, #e84f47 75%, rgb(63, 81, 181) 90%);
     position: absolute;
     content: '';
@@ -111,6 +114,14 @@ h6 {
     right: 0;
     left: 0;
     top: 0;
+  }
+
+  .dialog-header {
+      color:#fff !important;
+      background: #607D8B !important;
+      font-size: 18px !important;
+      line-height: 18px !important;
+      font-weight: 300 !important;
   }
 .footer {
     bottom: 0px;

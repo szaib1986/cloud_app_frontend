@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
-import { IconButton, FlatButton, RaisedButton, AppBar } from 'material-ui';
+import { IconButton, FlatButton, AppBar } from 'material-ui';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
-import NavigationMoreVert from 'material-ui/svg-icons/navigation/more-vert';
 import ActionHome from 'material-ui/svg-icons/action/home';
-import { cyan500, orange500, amber900, white, amber100 } from 'material-ui/styles/colors';
-import { amber600 } from 'material-ui/styles/colors';
-import { amber50 } from 'material-ui/styles/colors';
-import { blueGrey300 } from 'material-ui/styles/colors';
-import { blueGrey50, blueGrey500 } from 'material-ui/styles/colors';
-import { indigo500 } from 'material-ui/styles/colors';
+import { white, blueGrey500 } from 'material-ui/styles/colors';
 import ImageGridOn from 'material-ui/svg-icons/image/grid-on';
 const Navigation = (props) => {
     const style = {
@@ -55,7 +49,7 @@ const Navigation = (props) => {
                     </div>
                 }
                 iconElementLeft=
-                {<IconButton onClick={props.toggleDrawer}>
+                {<IconButton>
                     <NavigationMenu />
                 </IconButton>}
             >

@@ -47,7 +47,10 @@ class GalleryContainer extends Component {
                     actions={actions}
                     modal={true}
                     open={this.props.isAddImgDialogOpen}
+                    titleClassName="dialog-header"
+                    bodyClassName="dialog-body"
                 >
+                    <label>Please choose an image (JPG, JPEG, PNG only)</label>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <TextField
                             type="file"

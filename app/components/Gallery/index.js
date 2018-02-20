@@ -43,6 +43,7 @@ const Gallery = (props) => {
         cellHeight={180}
         style={styles.gridList}
         cols={containerWidth()}
+        padding={20}
       >
         {props.gallery.map((galleryImg) => (
           <GridTile
