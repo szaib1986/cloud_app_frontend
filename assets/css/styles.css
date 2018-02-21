@@ -14,7 +14,7 @@ body {
     width: 100%;
 }
 * {
-    transition: all 2.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 h1,
 h2,
@@ -135,9 +135,11 @@ h6 {
     background: #90A4AE;
 }
 .carousel-arrow{
-    height: auto !important;
-    min-width: 36px !important;
-    max-width: 36px !important;
-    width: 36px !important;
-    background-color:#ccc !important;
+    height: 55px !important;
+    min-width: 55px !important;
+    max-width: 55px !important;
+    width: 55px !important;
+    background-color: #ccc !important;
+    margin: auto 5px !important;
+    border-radius: 50% !important;
 }

@@ -6,6 +6,8 @@ import IconButton from 'material-ui/IconButton';
 import { Card, CardText, FloatingActionButton, GridList, GridTile, Subheader } from 'material-ui';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import Pagination from 'material-ui-pagination';
+import { CardHeader } from 'material-ui/Card/CardHeader';
 const Gallery = (props) => {
   const styles = {
     root: {
@@ -16,16 +18,10 @@ const Gallery = (props) => {
     gridList: {
       width: "100%",
       overflowY: 'auto',
+      justifyContent: 'space-evenly',
     },
   };
-  function containerWidth() {
-    if (screen.width < 768)
-      return 1
-    else if (screen.width > 768)
-      return 5
-    else
-      return 2
-  }
+  
   function formatDateOnly(date) {
     let d = new Date(date);
     return d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear()
@@ -42,10 +38,10 @@ const Gallery = (props) => {
       return (<GridList
         cellHeight={180}
         style={styles.gridList}
-        cols={containerWidth()}
+        cols={props.galleryCols}
         padding={20}
       >
-        {props.gallery.map((galleryImg) => (
+        {props.gallery.pagination.currentPageElems.map((galleryImg) => (
           <GridTile
             key={galleryImg.id}
             title={<span>Added on: <b>{formatDateOnly(galleryImg.createdDate)}</b></span>}
@@ -68,7 +64,11 @@ const Gallery = (props) => {
         </FloatingActionButton>
         <Card className="card">
           <CardText style={styles.root}>
-            {renderGallery(props.gallery)}
+            <Pagination onChange={props.changePage} total={props.gallery.pagination.totalPages} 
+              display={props.gallery.pagination.pagesToDisplay} 
+              current={props.gallery.pagination.currentPage}>
+            </Pagination>
+            {renderGallery(props.gallery.images)}
           </CardText>
         </Card>
       </div>
@@ -77,7 +77,7 @@ const Gallery = (props) => {
 }
 
 Gallery.propTypes = {
-  gallery: PropTypes.array.isRequired,
+  gallery: PropTypes.object.isRequired,
   showZoomedImage: PropTypes.func.isRequired
 };
 
