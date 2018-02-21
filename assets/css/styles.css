@@ -80,7 +80,7 @@ h6 {
 .page-container {
     height: calc(100% - 95px);
     overflow: hidden;
-    max-width: 1368px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 

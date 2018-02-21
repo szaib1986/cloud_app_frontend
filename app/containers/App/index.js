@@ -3,7 +3,6 @@ import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { Snackbar } from "material-ui";
 import HomePage from "../../components/HomePage/index";
-import AboutUs from "../../components/AboutUs/index";
 import Footer from "../../components/Footer/index";
 import NavigationContainer from "../NavigationContainer/index";
 import GalleryContainer from "../GalleryContainer/index"
@@ -24,8 +23,8 @@ class App extends React.Component {
                 <div style={styles}>
                 <Router>
                     <Switch>
-                        <Route exact path='/' component={GalleryContainer} />
-                        <Route exact path='/aboutus' component={AboutUs} />
+                        <Route exact path='/' component={HomePage} />
+                        <Route exact path='/gallery' component={GalleryContainer} />
                     </Switch>
                 </Router>
                 <Footer />

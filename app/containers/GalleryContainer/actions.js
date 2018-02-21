@@ -47,7 +47,7 @@ export function closeCarousel() {
     }
 }
 
-export function loadImageCarousel(imageId) {
+export function loadImageCarousel(imageId = null) {
     return api.loadImageById(imageId).then(selectedImage => {
         return {
             type: LOAD_IMAGE_IN_CAROUSEL,
@@ -59,7 +59,7 @@ export function loadImageCarousel(imageId) {
 export function setGalleryColumns() {
     let galleryCols = 2;
     let width = window.innerWidth;
-    
+
     if (width < 768)
         galleryCols = 1;
     else if (width > 768)
@@ -72,9 +72,26 @@ export function setGalleryColumns() {
 }
 
 export function changePage(page) {
-    alert(page);
     return {
         type: CHANGE_PAGINATION_PAGE,
         page
     }
+}
+
+export function deleteImage(imgId, dispatch) {
+    return api.deleteImage(imgId).then(gallery => {
+
+        //also dispatch function to reload gallery
+        dispatch(loadGallery())
+
+        if (gallery.length == 0)
+            dispatch(closeCarousel());
+        else {
+            dispatch(loadImageCarousel(null));
+            return {
+                type: LOAD_GALLERY,
+                gallery
+            }
+        }
+    })
 }

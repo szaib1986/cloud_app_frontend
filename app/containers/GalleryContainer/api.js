@@ -27,12 +27,19 @@ let api = {
                 return imgObj;
             });
     },
-    loadImageById: imageId => {
+    loadImageById: (imageId = null) => {
         return api.loadAll()
             .then(gallery => {
-                let image = _.find(gallery, { id: imageId })
+                let image = null;
+                if (imageId == null)
+                    image = gallery[0];
+                else
+                    image = _.find(gallery, { id: imageId })
+
                 let index = gallery.indexOf(image);
+                
                 image['index'] = index;
+                
                 if (index == 0)
                     image['prevImageId'] = null;
                 else
@@ -46,6 +53,16 @@ let api = {
                 return image;
             })
 
+    },
+    deleteImage: imgId => {
+        return api.loadAll().then(gallery => {
+            let imgObj = _.find(gallery, {id: imgId});
+            let index = gallery.indexOf(imgObj);
+            gallery.splice(index, 1);
+            //set gallery back to localStorage
+            localStorage.setItem('gallery', JSON.stringify(gallery));
+            return gallery;
+        })
     }
 }
 

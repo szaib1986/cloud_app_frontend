@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import Gallery from "../../components/Gallery/index";
-import { loadGallery, changePage, setGalleryColumns, openImageAddDialog, closeDialog, saveImage, loadImageCarousel, openCarousel, closeCarousel } from "./actions";
+import { loadGallery, changePage, deleteImage, setGalleryColumns, openImageAddDialog, closeDialog, saveImage, loadImageCarousel, openCarousel, closeCarousel } from "./actions";
 import ZoomedImage from "../../components/Gallery/ZoomedImage/index";
 import { connect } from 'react-redux';
 import { toJS, fromJS } from "immutable";
@@ -96,6 +96,7 @@ function mapDispatchToProps(dispatch) {
         closeCarousel: () => dispatch(closeCarousel()),
         fetchImage: imgId => dispatch(loadImageCarousel(imgId)),
         changePage: page => dispatch(changePage(page)),
+        deleteImage: imgId => dispatch(deleteImage(imgId, dispatch)),
         loadGalleryImages: () => dispatch(loadGallery()),
         openImageAddDialog: () => dispatch(openImageAddDialog()),
         cancelAddDialog: () => {

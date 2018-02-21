@@ -1,28 +1,23 @@
 import React from 'react';
 import { render } from "react-dom";
 import PageHeader  from "../Includes/PageTitle/index";
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardText} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 const HomePage = (props) => {
     return (
         <div className="page-container">
-            <PageHeader title="Home Page Title" />
+            <PageHeader title="Talent to Hire" />
             <div className="page-content">
-                <Card className="card">
-                    {/* <CardHeader style={{backgroundColor: "rgb(232, 232, 232)"}}
-                      title="Without Avatar"
-                      subtitle="Subtitle"
-                    /> */}
-                    {/* <CardActions>
-                      <FlatButton label="Action1" />
-                      <FlatButton label="Action2" />
-                    </CardActions> */}
-                    <CardText>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                    </CardText>
+                <Card className="card" style={{padding:20}}>
+                    <FlatButton>
+                        Please go to <RaisedButton
+                        label="Gallery"
+                        primary={true}
+                        style={{marginLeft: 20}}
+                        onClick={()=> {window.location.href='/gallery';}}
+                        ></RaisedButton>
+                    </FlatButton>
                 </Card>
             </div>
         </div>

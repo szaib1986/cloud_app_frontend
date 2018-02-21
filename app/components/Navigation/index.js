@@ -6,6 +6,7 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import { white, blueGrey500 } from 'material-ui/styles/colors';
 import ImageGridOn from 'material-ui/svg-icons/image/grid-on';
+import { NavLink } from 'react-router-dom'
 const Navigation = (props) => {
     const style = {
         appBar: {
@@ -38,14 +39,17 @@ const Navigation = (props) => {
                             label="Home"
                             labelPosition="after"
                             style={iconStyles.icon}
-
+                            onClick={() => { window.location.href = '/'}}
                             icon={<ActionHome />}
                         />
-                        <FlatButton
-                            label="Gallery"
-                            labelPosition="after"
-                            style={iconStyles.icon}
-                            icon={<ImageGridOn />} />
+                        {/* <NavLink to='/gallery'> */}
+                            <FlatButton
+                                label="Gallery"
+                                labelPosition="after"
+                                style={iconStyles.icon}
+                                onClick={() => { window.location.href = '/gallery'}}
+                                icon={<ImageGridOn />} />
+                        {/* </NavLink> */}
                     </div>
                 }
                 iconElementLeft=

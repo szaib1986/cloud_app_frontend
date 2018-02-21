@@ -26,6 +26,18 @@ const Gallery = (props) => {
     let d = new Date(date);
     return d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear()
   }
+
+  function renderPagination() {
+    if (props.gallery.images.length > 0)
+    return (
+      <Pagination styleRoot={{width: "100%", borderBottom: "1px solid #e4e4e4", paddingBottom: 5, marginBottom: 15, textAlign: "center"}} onChange={props.changePage} total={props.gallery.pagination.totalPages} 
+              display={props.gallery.pagination.pagesToDisplay} 
+              current={props.gallery.pagination.currentPage}>
+      </Pagination>
+    )
+    else return "";
+  }
+
   function renderGallery(gallery) {
 
     if (!gallery || gallery.length == 0) {
@@ -64,10 +76,7 @@ const Gallery = (props) => {
         </FloatingActionButton>
         <Card className="card">
           <CardText style={styles.root}>
-            <Pagination onChange={props.changePage} total={props.gallery.pagination.totalPages} 
-              display={props.gallery.pagination.pagesToDisplay} 
-              current={props.gallery.pagination.currentPage}>
-            </Pagination>
+            {renderPagination()}
             {renderGallery(props.gallery.images)}
           </CardText>
         </Card>
